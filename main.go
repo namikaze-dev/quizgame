@@ -47,7 +47,6 @@ func PlayGame(o io.Writer, i io.Reader, questions []ParsedQuestion) {
 func playNextLine(o io.Writer, scn *bufio.Scanner, question ParsedQuestion) string {
 	fmt.Fprintf(o, "QUESTION: %v\n", question.Question)
 	answer := readNextAnswer(scn)
-	fmt.Fprintf(o, "ANSWER: %v\n", answer)
 	return answer
 }
 

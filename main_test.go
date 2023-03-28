@@ -16,15 +16,10 @@ func TestPlayGame(t *testing.T) {
 
 	got := output.String()
 	want := `QUESTION: 5+5
-ANSWER: 10
 QUESTION: 8+3
-ANSWER: 11
 QUESTION: 1+2
-ANSWER: 5
 QUESTION: "whats the fastest animal on land"
-ANSWER: cheetah
 QUESTION: "what 2*2, sir?"
-ANSWER: 8
 
 CORRECT: 3
 TOTAL: 5`
