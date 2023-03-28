@@ -49,7 +49,8 @@ TOTAL: 5`
 	})
 }
 
-const sample_csv_answers = `10
+const sample_csv_answers = `start trigger
+10
 11
 5
 cheetah

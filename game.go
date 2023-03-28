@@ -10,14 +10,17 @@ import (
 )
 
 func PlayGame(o io.Writer, i io.Reader, questions []ParsedQuestion, options Options) {
+	var scn = bufio.NewScanner(i)
+	// scan once as starting trigger
+	scn.Scan()
+
 	var ctx, cancel = context.WithTimeout(context.Background(), time.Duration(options.Timeout)*time.Second)
 	defer cancel()
 
 	var corrects int
-	var input = bufio.NewScanner(i)
 	for _, question := range questions {
 		fmt.Fprintf(o, "QUESTION: %v\n", question.Question)
-		answer, err := readNextAnswer(ctx, input)
+		answer, err := readNextAnswer(ctx, scn)
 
 		if err != nil {
 			fmt.Fprintln(o, "quizgame: time limit exceeded")
