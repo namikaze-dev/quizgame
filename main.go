@@ -7,17 +7,19 @@ import (
 )
 
 type Options struct {
-	source string
+	Source string
+	Timeout int
 }
 
 func main() {
 	var options Options
-	flag.StringVar(&options.source, "file", "problems.csv", "source csv file for questions")
+	flag.StringVar(&options.Source, "file", "problems.csv", "source csv file for questions")
+	flag.IntVar(&options.Timeout, "timeout", 30, "quiz time limit")
 	flag.Parse()
 
-	source := openFile(options.source)
+	source := openFile(options.Source)
 	questions := ParseQuestionsFromReader(source)
-	PlayGame(os.Stdout, os.Stdin, questions)
+	PlayGame(os.Stdout, os.Stdin, questions, options)
 }
 
 func openFile(fn string) *os.File {
